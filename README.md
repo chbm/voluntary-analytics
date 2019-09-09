@@ -19,25 +19,31 @@ styled.
 <analytics to="https://example.com">
 	<persistentTracker />
 	<basicDemographics />
-
+  <note>Please do not block us, we like to know about you</note>
 </analytics>
 ```
 
+## Analytics Object
+
+```
 {
 	"basic": {
-		"fromUrl": full url of the page including the tag,
-		"sessionId": volatile session ID as determined by the User Agent,
-		"user-agent":
-		"system":
-		
+		"fromUrl": "full url of the page including the tag",
+		"sessionId": "volatile session ID as determined by the User Agent",
+		"user-agent": "browser version string",
+		"browser-version": "chrome/53",
+		"rendering-engine": "blink",
+		"os": "android",
+		"platform": "mobile"	
 	},
 	"persistentTracker": {
-		"id": as determined by the User Agent
+		"id": "as determined by the User Agent"
 	},
 	"basicDemographics": {
-		"city": 
-		"country"
-		"sex":
-		"age":
+		"city": "gotham",
+		"country": "gilead",
+		"sex": "x",
+		"age": 33
 	}
 }
+```
