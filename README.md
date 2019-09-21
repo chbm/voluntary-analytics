@@ -68,7 +68,7 @@ styled.
 	<persistent-tracker />
 	<basic-demographics />
   <short-note>Please do not block us, we like to know about you</short-note>
-</analytics>
+</analytics-beacon>
 ```
 
 ### Data elements
