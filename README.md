@@ -42,6 +42,12 @@ the user.
 
 ## Usage 
 
+### Adoption
+
+Bootstraping the ecosystem leverages Web Components so that users can extend
+their User Agents via scripts and publishers can inject shims for the new tags. 
+As such, tag names are provisional and compatible with `customComponents`. 
+
 ### Tag
 
 Include the `<analytics>` tag in the page. The User Agent depending on its
@@ -58,10 +64,10 @@ requesting policy confirmation or a block in the page. In the last case the
 styled. 
 
 ```
-<analytics to="https://example.com">
-	<persistentTracker />
-	<basicDemographics />
-  <note>Please do not block us, we like to know about you</note>
+<analytics-beacon to="https://example.com">
+	<persistent-tracker />
+	<basic-demographics />
+  <short-note>Please do not block us, we like to know about you</short-note>
 </analytics>
 ```
 
@@ -85,7 +91,7 @@ The publisher requests the User submit demographic information such as
 
 The User Agent may submit any subset of the fields. 
 
-#### note
+#### short-note
 
 A short text the User Agent may display as part of rendering the tag.
 
@@ -100,18 +106,18 @@ The User Agent submits a JSON object of the form
 ```
 {
 	"basic": {
-		"fromUrl": "full url of the page including the tag",
-		"sessionId": "volatile session ID as determined by the User Agent",
+		"from-url": "full url of the page including the tag",
+		"session-id": "volatile session ID as determined by the User Agent",
 		"user-agent": "browser version string",
 		"browser-version": "chrome/53",
 		"rendering-engine": "blink",
 		"os": "android",
 		"platform": "mobile"	
 	},
-	"persistentTracker": {
+	"persistent-tracker": {
 		"id": "as determined by the User Agent"
 	},
-	"basicDemographics": {
+	"basic-demographics": {
 		"city": "gotham",
 		"country": "gilead",
 		"sex": "x",
@@ -120,7 +126,8 @@ The User Agent submits a JSON object of the form
 }
 ```
 
-Fields the User Agent elects not to submit must have value `null`. 
+Fields the User Agent elects not to submit must have value `null` and not
+"falsy" values such as `false`, `0` or `''`. 
 
 ## Other tracking methods
 
