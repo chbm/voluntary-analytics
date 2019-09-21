@@ -1,5 +1,9 @@
 # Voluntary Analytics 
 
+## Status
+
+Evolving draft
+
 ## Abstract
 
 This document describes a mechanism for cooperative we analytics that respects
