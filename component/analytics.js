@@ -1,9 +1,24 @@
 (function() {
-	
+
+
+	function random () {
+		return crypto.getRandomValues(new Uint16Array(8)).join('-');
+	}
+
+	function cachedId(s) {
+		let idKey = 'analytics-component-id';
+		var id = s.getItem(idKey);
+		if (!id) {
+			id = random();
+			s.setItem(idKey, id);
+		}
+		return id;
+	}
+
 	let subtags = {
 		'PERSISTENT-TRACKER': function(d) {
 			d['persistent-tracker'] = {
-				id: 0
+				id: cachedId(localStorage)
 			}
 			return d;
 		},
@@ -21,7 +36,7 @@
 		if (!t) return d; 
 
 		return process(
-			subtags[t] ? subtags[t](d) : d,
+			subtags[t.tagName] ? subtags[t.tagName](d) : d,
 			t.nextElementSibling);
 	}
 
@@ -39,14 +54,13 @@
 			}
 
 			p['basic'] = {
-				'session-id': 0,
+				'session-id': cachedId(sessionStorage),
 				'from-url': document.location.href,
 				'user-agent': navigator.userAgent,
 				'browser-version': navigator.appVersion,
 				'rendering-engine': "idk",
 				'os': "igiveup",
-				'platform': navigator.platform,
-				
+				'platform': navigator.platform,	
 			};
 
 			process(p, this.firstElementChild);	
