@@ -135,3 +135,13 @@ User Agents should treat any other attempts to collect User data as hostile and
 should actively prevent them as per User policy. Publishers not following this
 specification have no expectation of cooperation by the User Agent. 
 
+# Copyright notice
+
+Created by Carlos Morgado in 2019.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" >
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+</a>
+
+Included examples and samples are in the public domain ("CC0") unless otherwise noted.
+
